@@ -1,8 +1,10 @@
-#!/bin/bash
+#!/bin/sh
 
 set -e
 
 function main() {
+  echo "Starting Federation..."
+
   PGPASSWORD=password
   while ! psql -h federationpostgres -U federation -c 'select 1' federationdb &> /dev/null
   do
@@ -27,7 +29,7 @@ function init_federation_db() {
     INSERT INTO people (id, name, domain) VALUES
       ('GD2GJPL3UOK5LX7TWXOACK2ZPWPFSLBNKL3GTGH6BLBNISK4BGWMFBBG', 'bob', 'stellar.org'),
       ('GCYMGWPZ6NC2U7SO6SMXOP5ZLXOEC5SYPKITDMVEONLCHFSCCQR2J4S3', 'alice', 'stellar.org');
-  EOS
+EOS
 
   touch /opt/federation/.federationdb-initialized
 }
