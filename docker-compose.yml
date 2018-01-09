@@ -7,7 +7,7 @@ services:
       volumes:
         - ~/stellar/federation/postgresql:/var/lib/postgresql/data
       environment:
-        POSTGRES_USER:       federation
+        POSTGRES_USER:       stellar
         POSTGRES_PASSWORD:   password
         POSTGRES_DB:         federationdb
       networks:
@@ -27,7 +27,7 @@ services:
         POSTGRES_PASSWORD:   password
         POSTGRES_DB:         federationdb
         FEDERATION_DB_TYPE:  postgres
-        FEDERATION_DB_DSN:   "postgres://federation:password@federationpostgres/federationdb?sslmode=disable"
+        FEDERATION_DB_DSN:   "postgres://stellar:password@federationpostgres/federationdb?sslmode=disable"
       ports:
         - "8801:8801"
       networks:

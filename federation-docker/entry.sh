@@ -5,8 +5,12 @@ set -e
 function main() {
   echo "Starting Federation..."
 
-  PGPASSWORD=password
-  while ! psql -h federationpostgres -U federation -c 'select 1' federationdb &> /dev/null
+  build-config /configs/config.toml > /opt/federation/federation.cfg
+
+  build-config /configs/pgpass-config > /root/.pgpass
+  chmod 600 /root/.pgpass
+
+  while ! psql -h federationpostgres -U stellar -c 'select 1' federationdb &> /dev/null
   do
     echo "Waiting for federationdb to be available..."
     sleep 1
@@ -23,8 +27,7 @@ function init_federation_db() {
   fi
 
   # add sample data
-  PGPASSWORD=password
-  psql -h federationpostgres -U federation federationdb -e <<-EOS
+  psql -h federationpostgres -U stellar federationdb -e <<-EOS
     CREATE TABLE people (id character varying, name character varying, domain character varying);
     INSERT INTO people (id, name, domain) VALUES
       ('GD2GJPL3UOK5LX7TWXOACK2ZPWPFSLBNKL3GTGH6BLBNISK4BGWMFBBG', 'bob', 'stellar.org'),
@@ -35,8 +38,6 @@ EOS
 }
 
 function start_federation() {
-  build-config /config.toml > /opt/federation/federation.cfg
-
   /go/bin/federation server -c /opt/federation/federation.cfg
 }
 

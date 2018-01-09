@@ -19,7 +19,6 @@ COPY --from=builder /go/bin/federation /go/bin/federation
 
 ADD build-config /usr/bin/build-config
 RUN chmod +x /usr/bin/build-config
-ADD config.toml /config.toml
 
 RUN ["mkdir", "-p", "/opt/federation"]
 
@@ -29,5 +28,7 @@ RUN chmod +x /entry.sh
 ADD apk-server /apk-server
 RUN chmod +x /apk-server
 RUN /apk-server
+
+ADD configs /configs
 
 ENTRYPOINT ["/entry.sh"]
