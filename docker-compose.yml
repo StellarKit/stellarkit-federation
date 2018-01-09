@@ -23,7 +23,7 @@ services:
         - federationpostgres
       environment:
         FEDERATION_PORT:     8801
-        POSTGRES_USER:       federation
+        POSTGRES_USER:       stellar
         POSTGRES_PASSWORD:   password
         POSTGRES_DB:         federationdb
         FEDERATION_DB_TYPE:  postgres
