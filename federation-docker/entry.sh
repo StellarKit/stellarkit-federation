@@ -38,7 +38,7 @@ EOS
 }
 
 function start_federation() {
-  /go/bin/federation server -c /opt/federation/federation.cfg
+  /go/bin/federation server --conf /opt/federation/federation.cfg
 }
 
 main
