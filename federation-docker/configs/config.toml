@@ -1,8 +1,8 @@
 port = ${FEDERATION_PORT}
 
 [queries]
-federation = "SELECT account_id as id FROM Users WHERE username = ? AND domain = ?"
-reverse-federation = "SELECT username as name, domain FROM Users WHERE account_id = ?"
+federation = "SELECT account_id as id FROM users WHERE username = ? AND domain = ?"
+reverse-federation = "SELECT username as name, domain FROM users WHERE account_id = ?"
 
 [database]
 type = "${FEDERATION_DB_TYPE}"
