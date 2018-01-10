@@ -5,7 +5,7 @@ set -e
 function main() {
   echo "Starting Federation..."
 
-  build-config /configs/config.toml > /opt/federation/federation.cfg
+  build-config /configs/config.toml > $FEDERATION_HOME/federation.cfg
 
   build-config /configs/pgpass-config > /root/.pgpass
   chmod 600 /root/.pgpass
@@ -16,12 +16,17 @@ function main() {
     sleep 1
   done
 
-  init_federation_db
-  start_federation
+  if [ ! -d $FEDERATION_HOME/tls ]
+  then
+    echo "Add tls directory!"
+  else
+    init_federation_db
+    start_federation
+  fi
 }
 
 function init_federation_db() {
-  if [ -f /opt/federation/.federationdb-initialized ]; then
+  if [ -f $FEDERATION_HOME/.federationdb-initialized ]; then
     echo "federation DB: already initialized"
     return 0
   fi
@@ -31,13 +36,13 @@ function init_federation_db() {
     CREATE TABLE people (id character varying, name character varying, domain character varying);
     INSERT INTO people (id, name, domain) VALUES
       ('GCYQSB3UQDSISB5LKAL2OEVLAYJNIR7LFVYDNKRMLWQKDCBX4PU3Z6JP', 'steve', 'stellarkit.io')
- EOS
+EOS
 
-  touch /opt/federation/.federationdb-initialized
+  touch $FEDERATION_HOME/.federationdb-initialized
 }
 
 function start_federation() {
-  /go/bin/federation server --conf /opt/federation/federation.cfg
+  /go/bin/federation server --conf $FEDERATION_HOME/federation.cfg
 }
 
 main
