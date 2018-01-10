@@ -27,6 +27,7 @@ services:
         POSTGRES_PASSWORD:   password
         POSTGRES_DB:         federationdb
         FEDERATION_DB_TYPE:  postgres
+        FEDERATION_HOME:     /opt/federation
         FEDERATION_DB_DSN:   "postgres://stellar:password@federationpostgres/federationdb"
       ports:
         - "8801:8801"

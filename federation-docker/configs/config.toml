@@ -7,3 +7,7 @@ reverse-federation = "SELECT name, domain FROM people WHERE id = ?"
 [database]
 type = "${FEDERATION_DB_TYPE}"
 dsn = "${FEDERATION_DB_DSN}"
+
+[tls]
+certificate-file = "${FEDERATION_HOME}/tls/server.crt"
+private-key-file = "${FEDERATION_HOME}/tls/server.key"
