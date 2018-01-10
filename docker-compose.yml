@@ -30,6 +30,6 @@ services:
         FEDERATION_HOME:     /opt/federation
         FEDERATION_DB_DSN:   "postgres://stellar:password@federationpostgres/federationdb?sslmode=disable"
       ports:
-        - "8801:8801"
+        - "443:8801"
       networks:
           - default
