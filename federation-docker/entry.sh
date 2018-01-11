@@ -10,7 +10,7 @@ function main() {
   build-config /configs/pgpass-config > /root/.pgpass
   chmod 600 /root/.pgpass
 
-  while ! psql -h federationpostgres -U stellar -c 'select 1' federationdb &> /dev/null
+  while ! psql -h federationpostgres -U $POSTGRES_USER -c 'select 1' federationdb &> /dev/null
   do
     echo "Waiting for federationdb to be available..."
     sleep 1
@@ -32,7 +32,7 @@ function init_federation_db() {
   fi
 
   # add sample data
-  psql -h federationpostgres -U stellar federationdb -e <<-EOS
+  psql -h federationpostgres -U $POSTGRES_USER federationdb -e <<-EOS
     CREATE TABLE people (id character varying, name character varying, domain character varying);
     INSERT INTO people (id, name, domain) VALUES
       ('GCYQSB3UQDSISB5LKAL2OEVLAYJNIR7LFVYDNKRMLWQKDCBX4PU3Z6JP', 'steve', 'stellarkit.io')
