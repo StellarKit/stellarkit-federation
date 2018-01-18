@@ -21,3 +21,9 @@ Add your accounts there
 Edit docker-compose.yml for mainnet
 
 Pull requests welcome!
+
+### Donations
+If you like this code, a donation would be appreciated:
+```
+GCYQSB3UQDSISB5LKAL2OEVLAYJNIR7LFVYDNKRMLWQKDCBX4PU3Z6JP
+```
