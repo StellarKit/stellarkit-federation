@@ -11,7 +11,7 @@ docker-compose up -d
 Creates a folder 'stellar' in your home folder.  Everything is stored there, delete it to reset.
 
 ### SSL NOTE:
-Start it up once and stop it, for SSL to work you need to copy a folder named 'tsl' inside ~/stellar/federation with your server.crt and server.key
+Start it up once and stop it, for SSL to work you need to copy a folder named 'tls' inside ~/stellar/federation with your server.crt and server.key
 
 ### Adding Accounts:
 
