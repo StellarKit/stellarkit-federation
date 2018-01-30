@@ -13,6 +13,7 @@ RUN mkdir -p /go/src/github.com/stellar/ \
     && go install github.com/stellar/go/services/federation
 
 
+# -----------------------
 FROM alpine:latest
 
 COPY --from=builder /go/bin/federation /go/bin/federation
