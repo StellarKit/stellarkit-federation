@@ -1,4 +1,4 @@
-## Stellar Federation
+## StellarKit Federation
 
 ### The simplest and cleanest Docker image for running federation
 
@@ -19,6 +19,8 @@ To add accounts look inside entry.sh for the line 'INSERT INTO people ...'
 Add your accounts there
 
 Pull requests welcome!
+
+Disclaimer: We not affiliated with, or sponsored or endorsed by, the Stellar Development Foundation.
 
 ### Donations
 
